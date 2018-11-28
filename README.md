@@ -15,14 +15,14 @@ Podatke o letnih izpustih treh toplogrednih plinov (CO2, NO in CH4) v ozračje v
 
 Viri:
 
-[Izpusti ogljikovega dioksida v ozračje](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_ainah_r2&lang=en)
-[Izpusti metana v ozračje](http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do)
-[Izpusti dušikovega oksida](http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do)
-[Izpusti toplogrednih plinov zaradi kmetijstva](https://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&language=en&pcode=tai08&plugin=1)
-[Izpusti toplogrednih plinov zaradi prometa](https://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&language=en&pcode=t2020_rk300&plugin=1)
-[Izdatki za okoljsko varstvo](https://ec.europa.eu/eurostat/tgm/refreshTableAction.do?tab=table&plugin=1&pcode=ten00049&language=en)
-[Kapacitete pri proizvodnji biogoriv](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=nrg_114a&lang=en)
-[Okoljski davki](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_taxind2&lang=en)
+*[Izpusti ogljikovega dioksida v ozračje](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_ainah_r2&lang=en)
+*[Izpusti metana v ozračje](http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do)
+*[Izpusti dušikovega oksida](http://appsso.eurostat.ec.europa.eu/nui/submitViewTableAction.do)
+[*Izpusti toplogrednih plinov zaradi kmetijstva](https://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&language=en&pcode=tai08&plugin=1)
+*[Izpusti toplogrednih plinov zaradi prometa](https://ec.europa.eu/eurostat/tgm/table.do?tab=table&init=1&language=en&pcode=t2020_rk300&plugin=1)
+*[Izdatki za okoljsko varstvo](https://ec.europa.eu/eurostat/tgm/refreshTableAction.do?tab=table&plugin=1&pcode=ten00049&language=en)
+*[Kapacitete pri proizvodnji biogoriv](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=nrg_114a&lang=en)
+*[Okoljski davki](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=env_ac_taxind2&lang=en)
 
 ## Program
 
