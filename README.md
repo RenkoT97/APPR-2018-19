@@ -11,7 +11,12 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 Toplogredni plini so plini, ki povzročajo učinek tople grede in s tem pripomorejo k globalnemu segrevanju ozračja. V nalogi se bom osredotočila na primerjavo količine izpustov le-teh v zrak z okoljskimi ukrepi po evropskih državah. 
 
-Podatke o letnih izpustih treh toplogrednih plinov (CO2, NO in CH4) v ozračje v evropskih državah od leta 2007 do 2016 bom gledala v razmerju s številom prebivalcev, da bodo podatki primerljivi. To bom primerjala s količino denarja, ki ga država vlaga v okolje ter v posamezne panoge, pri katerih prihaja do nastanka topogrednih plinov, in poskusila sklepati, kateri ukrepi so najbolj učinkoviti. Podrobneje bom gledala emisije iz odpadkov, kmetijstva in prometa.
+Podatke o letnih izpustih treh toplogrednih plinov (CO2, NO in CH4) v ozračje v evropskih državah od leta 2007 do 2016 bom gledala v razmerju s številom prebivalcev, da bodo podatki primerljivi. To bom primerjala s količino denarja, ki ga država vlaga v okolje ter v posamezne panoge, pri katerih prihaja do nastanka toplogrednih plinov, in poskusila sklepati, kateri ukrepi so najbolj učinkoviti. Podrobneje bom gledala emisije iz odpadkov, kmetijstva in prometa. Izpuste bom primerjala tudi z BDP, da bo vidno, ali in koliko razvitost ter blagostanje države pozitivno vplivata na njih.
+
+Tabele:
+
+* Leto, izpusti posameznih plinov, število prebivalcev, izpusti na prebivalca letno, BDP
+* Leto, izpusti plinov v posamezni panogi, ukrepi v posamezni panogi, vsi izpusti, ves denar za okoljske probleme
 
 Viri:
 
