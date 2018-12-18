@@ -65,6 +65,14 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
   - `DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV` - meritev: (število),
   - `DAVKI NA PROMET V MILIJONIH EVROV` - meritev: (število),
   - `OKOLJSKI DAVKI V MILIJONIH EVROV` - meritev: (število).
+  
+4. `Denar za varovanje okolja` - tekoči izdatki in investicije v deležu BDP, ki ga država namenja za ohranjanje okolja
+  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
+  - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
+  - `DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA` - meritev: (število),
+  - `DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE` - meritev: (število),
+  - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` - meritev: (število),
+  - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI` - meritev: (število).
 
 **Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
 
