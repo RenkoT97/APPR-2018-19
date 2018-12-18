@@ -10,6 +10,8 @@ output:
 runtime: shiny
 ---
 
+
+
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
@@ -26,7 +28,8 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Za svojo projektno nalogo bom analizirala izpuste toplogrednih plinov po Evropi. Primerjala bom razvitost držav (BDP) z 
+okoljskimi davki in letnimi izpusti.
 
 ![](slike/grb.png)
 
@@ -38,24 +41,30 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spletne strani Eurostat. Podatki so podani v treh razpredelnicah.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. `Letni izpusti toplogrednih plinov` - podatki za posamezen plin, državo in leto
+  - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
+  - `DRŽAVA` - spremenljivka: ime države (neurejen faktor),
+  - `EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH` - meritev: letni izpust v določeni državi (število),
+  - `EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH` - meritev: letni izpust v določeni državi (število),
+  - `EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH` - meritev: letni izpust v določeni državi (število).
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+2. `Pregled držav` - splošni podatki, pripravljeni za primerjanje
+  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
+  - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
+  - `ŠTEVILO PREBIVALCEV` - meritev: število prebivalcev določene države v določenem letu (število),
+  - `GDP V MILIJONIH EVROV` - meritev: bruto domači proizvod določene države v določenem letu (število),
+  - `GDP NA PREBIVALCA V EVRIH` - meritev: bruto domači proizvod na prebivalca določene države v določenem letu (število).
+  
+3. `Okoljski davki` - pregled obdavčitev dejavnosti, ki slabo vplivajo na okolje
+  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
+  - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
+  - `DAVKI NA ENERGIJO V MILIJONIH EVROV` - meritev: (število),
+  - `DAVKI NA ONESNAŽEVANJE V MILIJONIH EVROV` - meritev: (število),
+  - `DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV` - meritev: (število),
+  - `DAVKI NA PROMET V MILIJONIH EVROV` - meritev: (število),
+  - `OKOLJSKI DAVKI V MILIJONIH EVROV` - meritev: (število).
 
 **Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
 
