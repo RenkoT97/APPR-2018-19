@@ -17,7 +17,7 @@ bdp <- subset(bdp, geo != "")
 bdp <- bdp[-c(1, 2)]
 names(bdp) <- (c("DRŽAVA", "LETO", "GDP V MILIJONIH EVROV"))
 
-tabela2 <- merge(prebivalci, bdp)
+tabela2 <- join(prebivalci, bdp, type = "inner")
 tabela2$"GDP NA PREBIVALCA V EVRIH" <- tabela2$"GDP V MILIJONIH EVROV" /
 tabela2$"ŠTEVILO PREBIVALCEV" * 1000000
 

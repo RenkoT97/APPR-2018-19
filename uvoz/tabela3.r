@@ -23,9 +23,9 @@ promet <- subset(promet, unit == "Million euro")
 promet <- promet[-c(1,2)]
 names(promet) <- c("DRŽAVA", "LETO", "DAVKI NA PROMET V MILIJONIH EVROV")
 
-tabela3 <- merge(energija, onesnazevanje)
-tabela3 <- merge(tabela3, naravni_viri)
-tabela3 <- merge(tabela3, promet)
+tabela3 <- join(energija, onesnazevanje, type = "inner")
+tabela3 <- join(tabela3, naravni_viri, type = "inner")
+tabela3 <- join(tabela3, promet, type = "inner")
 
 tabela3$"OKOLJSKI DAVKI V MILIJONIH EVROV" <-
   tabela3$"DAVKI NA ENERGIJO V MILIJONIH EVROV" +
