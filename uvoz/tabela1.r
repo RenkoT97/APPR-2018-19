@@ -17,7 +17,10 @@ emisijeNO <- emisijeNO[-c(1:10),]
 emisijeNO <- emisijeNO[,-c(3,4,5,7)]
 names(emisijeNO) <- (c("LETO", "DRŽAVA", "EMISIJE DUŠIKOVEGA OKSIDA V TONAH"))
 
-tabela1 <- join(emisijeCO2, emisijeCH4, type = "inner")
-tabela1 <- join(tabela1, emisijeNO, type = "inner")
+tabela1 <- inner_join(emisijeCO2, emisijeCH4)
+tabela1 <- inner_join(tabela1, emisijeNO)
 tabela1$"EMISIJE TOPLOGREDNIH PLINOV V TONAH" <- tabela1$"EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH" +
 tabela1$"EMISIJE METANA V TONAH" + tabela1$"EMISIJE DUŠIKOVEGA OKSIDA V TONAH"
+
+write.csv(tabela1, file = "emisije.csv")
+

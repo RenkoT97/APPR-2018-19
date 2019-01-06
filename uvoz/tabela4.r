@@ -31,3 +31,5 @@ names(industrija_investicije) <- c("DRŽAVA", "LETO", "DELEŽ BDP, NAMENJEN INVE
 tabela4 <- join(javni_sektor, industrija, type = "inner")
 tabela4 <- join(tabela4, javni_sektor_investicije, type = "inner") 
 tabela4 <- join(tabela4, industrija_investicije, type = "inner") 
+
+write.csv(tabela4, file = "vlaganja.csv")
