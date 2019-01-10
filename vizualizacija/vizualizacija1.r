@@ -8,43 +8,36 @@ library("ggplot2")
 library("munsell")
 library("reshape2")
 
-emisije <- read.csv("emisije.csv")
-emisije <- emisije[-c(1)]
+source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela1.r", encoding="UTF-8")
+source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela2.r", encoding="UTF-8")
+source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela3.r", encoding="UTF-8")
+source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela4.r", encoding="UTF-8")
 
-gdp <- read.csv("gdp.csv")
-gdp <- gdp[-c(1)]
-
-davki <- read.csv("davki.csv")
-davki <- davki[-c(1)]
-
-vlaganja <- read.csv("vlaganja.csv")
-vlaganja <- vlaganja[-c(1)]
-
-slo <- filter(emisije, DRŽAVA=="Slovenia")
+slo <- filter(tabela1, DRŽAVA=="Slovenia")
 LETO <- slo$LETO
-EMISIJE <- slo[,c(6)]
+EMISIJE <- slo$"EMISIJE TOPLOGREDNIH PLINOV V TONAH"
 graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color = "Države") + geom_line()
 
 draw <- function(tab) {
-  graf1 <<- graf1 + geom_line(aes(x=LETO, y=tab$EMISIJE.TOPLOGREDNIH.PLINOV.V.TONAH, color=tab$DRŽAVA))
+  graf1 <<- graf1 + geom_line(aes(x=LETO, y=tab$"EMISIJE TOPLOGREDNIH PLINOV V TONAH", color=tab$DRŽAVA))
   return(tab)
 }
 
-emisije %>% group_by(DRŽAVA) %>% do(draw(.))
+tabela1 %>% group_by(DRŽAVA) %>% do(draw(.))
 
 graf1 <- graf1 + scale_linetype_discrete(name = "Države")
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
 print(graf1)
 
-a <- inner_join(emisije, gdp)
+a <- inner_join(tabela1, tabela2)
 a <- a[-c(3, 4, 5)]
-a$EMISIJE.TOPLOGREDNIH.PLINOV.V.TONAH.NA.PREBIVALCA <- a$EMISIJE.TOPLOGREDNIH.PLINOV.V.TONAH / a$ŠTEVILO.PREBIVALCEV
+a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA" <- a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH" / a$"ŠTEVILO PREBIVALCEV"
 
-graf2 <- ggplot(data.frame()) +aes(x=a$GDP.NA.PREBIVALCA.V.EVRIH, y=a$EMISIJE.TOPLOGREDNIH.PLINOV.V.TONAH.NA.PREBIVALCA) + geom_point()
+graf2 <- ggplot(data.frame()) +aes(x=a$"GDP NA PREBIVALCA V EVRIH", y=a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA") + geom_point()
 graf2 <- graf2 + xlab("GDP per habita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV")
-print(graf2)
+#print(graf2)
 
-Slo <- filter(vlaganja, DRŽAVA=="Slovenia")
+Slo <- filter(tabela4, DRŽAVA=="Slovenia")
 graf3 <- ggplot(data.frame()) + aes(x=Slo$LETO, y=Slo$INVESTICIJE, color = "Države") + geom_line()
 
 draw2 <- function(tab) {
@@ -52,8 +45,8 @@ draw2 <- function(tab) {
   return(tab)
 }
 
-vlaganja$INVESTICIJE <- vlaganja$DELEŽ.BDP..NAMENJEN.INVESTICIJAM.ZA.VAROVANJE.OKOLJA..PORABLJENIM.V.JAVNEM.SEKTORJU + vlaganja$DELEŽ.BDP..NAMENJEN.INVESTICIJAM.ZA.VAROVANJE.OKOLJA..PORABLJENIM.V.INDUSTRIJI
-vlaganja %>% group_by(DRŽAVA) %>% do(draw2(.))
+tabela4$INVESTICIJE <- tabela4$"DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU" + tabela4$"DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI"
+tabela4 %>% group_by(DRŽAVA) %>% do(draw2(.))
 
 graf3 <- graf3 + xlab("LETO") + ylab("ODSTOTEK GDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA") + ggtitle("INVESTICIJE")
 print(graf3)
@@ -82,4 +75,4 @@ map <- ggplot() + geom_polygon(data=left_join(Evropa, b), aes(x=long, y=lat, gro
 map <- map + theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
                    axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank())
 map <- map + ggtitle(" LETNE EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA")
-print(map)
+#print(map)
