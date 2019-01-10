@@ -27,7 +27,7 @@ tabela1 %>% group_by(DRŽAVA) %>% do(draw(.))
 
 graf1 <- graf1 + scale_linetype_discrete(name = "Države")
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
-print(graf1)
+#print(graf1)
 
 a <- inner_join(tabela1, tabela2)
 a <- a[-c(3, 4, 5)]
@@ -49,7 +49,7 @@ tabela4$INVESTICIJE <- tabela4$"DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE O
 tabela4 %>% group_by(DRŽAVA) %>% do(draw2(.))
 
 graf3 <- graf3 + xlab("LETO") + ylab("ODSTOTEK GDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA") + ggtitle("INVESTICIJE")
-print(graf3)
+#print(graf3)
 
 source("https://raw.githubusercontent.com/jaanos/APPR-2018-19/master/lib/uvozi.zemljevid.r")
 
