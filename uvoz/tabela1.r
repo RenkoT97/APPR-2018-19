@@ -1,6 +1,7 @@
 library(readr)
 library(reshape2)
 library(dplyr)
+library(eurostat)
 
 emisijeCO2 <- read_csv("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/podatki/emisijeCO2.csv", na=c(":"))
 emisijeCO2 <- emisijeCO2[-c(1:10),]

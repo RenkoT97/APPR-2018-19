@@ -1,5 +1,6 @@
 library(eurostat)
 library(dplyr)
+library(eurostat)
 
 prebivalci <- get_eurostat('demo_pjan', time_format = "num", type = "label")
 prebivalci <- subset(prebivalci, time > 2006)
