@@ -50,7 +50,7 @@ Evropa <- filter(Evropa, long < 55 & long > -45 & lat > 30 & lat < 85)
 
 podatki_tortni <- filter(tabela3, LETO =="2013")
 
-graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color = "Države") + geom_line()
+graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color = "Države")
 
 tabela1 %>% group_by(DRŽAVA) %>% do(draw(.))
 
@@ -62,7 +62,7 @@ graf2 <- ggplot(data.frame()) +aes(x=a$"GDP NA PREBIVALCA V EVRIH", y=a$"EMISIJE
 graf2 <- graf2 + xlab("GDP per habita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV")
 #print(graf2)
 
-graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Države") + geom_line()
+graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Države")
 
 tabela4 %>% group_by(DRŽAVA) %>% do(draw2(.))
 
