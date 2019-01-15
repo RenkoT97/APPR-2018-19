@@ -31,15 +31,9 @@ source("lib/rstudio.r", encoding="UTF-8")
 Za svojo projektno nalogo bom analizirala izpuste toplogrednih plinov po Evropi. Primerjala bom razvitost držav (BDP) z 
 okoljskimi davki in letnimi izpusti.
 
-![](slike/grb.png)
-
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
-
-```{r uvoz, echo=FALSE, message=FALSE}
-source("uvoz/uvoz.r", encoding="UTF-8")
-```
 
 Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spletne strani Eurostat. Podatki so podani v treh razpredelnicah.
 
@@ -66,31 +60,33 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
   - `DAVKI NA PROMET V MILIJONIH EVROV` - meritev: (število),
   - `OKOLJSKI DAVKI V MILIJONIH EVROV` - meritev: (število).
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
-
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x=naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
-```
-
 ***
 
 # Analiza in vizualizacija podatkov
 
 ```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-source("vizualizacija/vizualizacija.r", encoding="UTF-8")
+source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/vizualizacija/vizualizacija1.r", encoding="UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data=left_join(zemljevid, povprecja, by=c("OB_UIME"="obcina")),
-                        aes(x=long, y=lat, group=group, fill=povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill=guide_colorbar(title="Povprečje"))
-```
+print(graf1)
+
+Spodnji graf primerja GDP per habita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno.
+
+print(graf2)
+
+Naslednji graf prikazuje odstotek GDP Evropskih držav, namenjen investicijam za varovanje okolja, med leti 2007 in 2013.
+
+print(graf3)
+
+Spodnji zemljevid prikazuje letne emisije vseh toplogrednih plinov posameznih držav v tonah na prebivalca, merjene v letu 2013.
+
+print(map)
+
+Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi.
+
+print(tortni_diagram)
 
 ***
 
@@ -98,18 +94,6 @@ ggplot() + geom_polygon(data=left_join(zemljevid, povprecja, by=c("OB_UIME"="obc
 
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding="UTF-8")
-```
-
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
-
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
 ```
 
 ***
