@@ -21,3 +21,5 @@ tabela1 <- inner_join(emisijeCO2, emisijeCH4)
 tabela1 <- inner_join(tabela1, emisijeNO)
 tabela1$"EMISIJE TOPLOGREDNIH PLINOV V TONAH" <- tabela1$"EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH" +
 tabela1$"EMISIJE METANA V TONAH" + tabela1$"EMISIJE DUŠIKOVEGA OKSIDA V TONAH"
+
+tabela1[41:50, "DRŽAVA"] <- "Germany"

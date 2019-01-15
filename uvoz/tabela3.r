@@ -1,6 +1,6 @@
 library(eurostat)
 
-okoljski_davki <- get_eurostat("env_ac_tax", time_format = "num", type = "label")
+okoljski_davki <- get_eurostat("env_ac_tax", time_format = "num", type = "label", stringsAsFactors = FALSE)
 okoljski_davki <- subset(okoljski_davki, time > 2006)
 
 vsi <- subset(okoljski_davki, tax == "Total environmental taxes")
@@ -34,3 +34,5 @@ tabela3$"OKOLJSKI DAVKI V MILIJONIH EVROV" <-
   tabela3$"DAVKI NA ONESNAŽEVANJE V MILIJONIH EVROV" +
   tabela3$"DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV" +
   tabela3$"DAVKI NA PROMET V MILIJONIH EVROV"
+
+tabela3$DRŽAVA <- replace(tabela3$DRŽAVA, tabela3$DRŽAVA=="Germany (until 1990 former territory of the FRG)", "Germany")

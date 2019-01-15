@@ -2,7 +2,7 @@ library(eurostat)
 library(dplyr)
 library(plyr)
 
-tab <- get_eurostat('ten00049', time_format = "num", type = "label")
+tab <- get_eurostat('ten00049', time_format = "num", type = "label", stringsAsFactors = FALSE)
 tab <- filter(tab, time > 2006)
 tab <- tab[-c(2,3, 4)]
 
@@ -30,4 +30,7 @@ names(industrija_investicije) <- c("DRŽAVA", "LETO", "DELEŽ BDP, NAMENJEN INVE
 
 tabela4 <- join(javni_sektor, industrija, type = "inner")
 tabela4 <- join(tabela4, javni_sektor_investicije, type = "inner") 
-tabela4 <- join(tabela4, industrija_investicije, type = "inner") 
+tabela4 <- join(tabela4, industrija_investicije, type = "inner")
+tabela4$DRŽAVA <- gsub("Euro.*", "", tabela4$DRŽAVA)
+
+tabela4$DRŽAVA <- replace(tabela4$DRŽAVA, tabela4$DRŽAVA=="Germany (until 1990 former territory of the FRG)", "Germany")
