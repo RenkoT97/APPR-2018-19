@@ -2,11 +2,12 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Tjaša Renko"
 output:
-  html_document: default
   pdf_document:
+    keep_tex: true
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
+  html_document: default
 ---
 
 
@@ -33,6 +34,13 @@ okoljskimi davki in letnimi izpusti.
 ***
 
 # Obdelava, uvoz in čiščenje podatkov
+
+```{r uvoz, echo=FALSE, message=FALSE}
+source("uvoz/tabela1.r", encoding="UTF-8")
+source("uvoz/tabela2.r", encoding="UTF-8")
+source("uvoz/tabela3.r", encoding="UTF-8")
+source("uvoz/tabela4.r", encoding="UTF-8")
+```
 
 Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spletne strani Eurostat. Podatki so podani v treh razpredelnicah.
 
@@ -63,8 +71,8 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/vizualizacija/vizualizacija1.r", encoding="UTF-8")
+```{r vizualizacija1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+source("vizualizacija/vizualizacija1.r", encoding="UTF-8")
 ```
 
 Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo.
