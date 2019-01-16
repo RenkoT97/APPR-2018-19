@@ -50,11 +50,10 @@ Evropa <- filter(Evropa, long < 55 & long > -45 & lat > 30 & lat < 85)
 
 podatki_tortni <- filter(tabela3, LETO =="2013")
 
-graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color = "DrZave")
+graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color="Države")
 
 tabela1 %>% group_by(DRZAVA) %>% do(draw(.))
 
-graf1 <- graf1 + scale_linetype_discrete(name = "Države")
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
 #print(graf1)
 
