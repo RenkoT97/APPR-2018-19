@@ -1,3 +1,5 @@
+library(eurostat)
+
 okoljski_davki <- get_eurostat("env_ac_tax", time_format = "num", type = "label")
 okoljski_davki <- subset(okoljski_davki, time > 2006)
 
@@ -23,9 +25,9 @@ promet <- subset(promet, unit == "Million euro")
 promet <- promet[-c(1,2)]
 names(promet) <- c("DRŽAVA", "LETO", "DAVKI NA PROMET V MILIJONIH EVROV")
 
-tabela3 <- join(energija, onesnazevanje, type = "inner")
-tabela3 <- join(tabela3, naravni_viri, type = "inner")
-tabela3 <- join(tabela3, promet, type = "inner")
+tabela3 <- inner_join(energija, onesnazevanje)
+tabela3 <- inner_join(tabela3, naravni_viri)
+tabela3 <- inner_join(tabela3, promet)
 
 tabela3$"OKOLJSKI DAVKI V MILIJONIH EVROV" <-
   tabela3$"DAVKI NA ENERGIJO V MILIJONIH EVROV" +
