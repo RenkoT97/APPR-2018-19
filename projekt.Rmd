@@ -2,12 +2,12 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Tjaša Renko"
 output:
-  html_document: default
   pdf_document:
+    keep_tex: true
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-runtime: shiny
+  html_document: default
 ---
 
 
@@ -21,7 +21,7 @@ runtime: shiny
 source("lib/libraries.r", encoding="UTF-8")
 ```
 
-```{r rstudio, echo=FALSE, results='asis'}
+```{r rstudio, echo=FALSE, results='asis', warning=FALSE}
 # Izris povezave do RStudia na Binderju
 source("lib/rstudio.r", encoding="UTF-8")
 ```
@@ -35,8 +35,11 @@ okoljskimi davki in letnimi izpusti.
 
 # Obdelava, uvoz in čiščenje podatkov
 
-```{r uvoz, echo=FALSE, message=FALSE}
-source("uvoz/uvoz.r", encoding="UTF-8")
+```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
+source("uvoz/tabela1.r", encoding="UTF-8")
+source("uvoz/tabela2.r", encoding="UTF-8")
+source("uvoz/tabela3.r", encoding="UTF-8")
+source("uvoz/tabela4.r", encoding="UTF-8")
 ```
 
 Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spletne strani Eurostat. Podatki so podani v treh razpredelnicah.
@@ -72,50 +75,36 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
   - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` - meritev: (število),
   - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI` - meritev: (število).
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
-
 ***
 
 # Analiza in vizualizacija podatkov
 
-```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-source("vizualizacija/vizualizacija.r", encoding="UTF-8")
+```{r vizualizacija1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+source("vizualizacija/vizualizacija1.r", encoding="UTF-8")
 ```
 
-Spodnji zemljevid prikazuje emisije vseh toplogrednih plinov v tonah na prebivalca v letu 2013 po državah..
+Spodnji graf primerja GDP per habita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno.
 
-print(map)
-
-Prvi graf prikazuje emisije toplogrednih plinov po državah med leti 2007 in 2016. Opazimo, da povečini rahlo upadajo.
-
-print(graf1)
-
-Naslednji graf primerja GDP na prebivalca z letnimi emisijami toplogrednih plinov posamezne države v tonah na prebivalca. Proti pričakovanjem se je izkazalo, da višji gdp ne pomeni manjšega izpusta, kvečjemu nasprotno.
-
-print(graf2)
-
-***
-
-# Napredna analiza podatkov
-
-```{r analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding="UTF-8")
+```{r graf2, echo=FALSE, message=FALSE, warning=FALSE}
+graf2
 ```
 
-Spodnji graf prikazuje povezavo med številom naselij in površino občine.
+Naslednji graf prikazuje odstotek GDP Evropskih držav, namenjen investicijam za varovanje okolja, med leti 2007 in 2013.
 
-```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'}
-ggplot(inner_join(obcine, data.frame(obcina=names(skupine),
-                                     skupina=factor(skupine)), by="obcina")
-, aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() +
-  ggtitle("Število naselij glede na površino občine") +
-  xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") +
-  guides(color=guide_legend(title="Skupina"),
-         size=guide_legend(title="Prebivalci (* 1000)"))
+```{r graf3, echo=FALSE, message=FALSE, warning=FALSE}
+graf3
+```
+
+Spodnji zemljevid prikazuje letne emisije vseh toplogrednih plinov posameznih držav v tonah na prebivalca, merjene v letu 2013.
+
+```{r map, echo=FALSE, message=FALSE, warning=FALSE}
+map
+```
+
+Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi.
+
+```{r tortni_diagram, echo=FALSE, message=FALSE, warning=FALSE}
+tortni_diagram
 ```
 
 ***
-
-```{r shiny, echo=FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```

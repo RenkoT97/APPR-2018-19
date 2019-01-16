@@ -1,5 +1,6 @@
 library(eurostat)
 library(dplyr)
+library(eurostat)
 
 prebivalci <- get_eurostat('demo_pjan', time_format = "num", type = "label")
 prebivalci <- subset(prebivalci, time > 2006)
@@ -20,3 +21,5 @@ names(bdp) <- (c("DRŽAVA", "LETO", "GDP V MILIJONIH EVROV"))
 tabela2 <- inner_join(prebivalci, bdp)
 tabela2$"GDP NA PREBIVALCA V EVRIH" <- tabela2$"GDP V MILIJONIH EVROV" /
 tabela2$"ŠTEVILO PREBIVALCEV" * 1000000
+
+tabela2$DRŽAVA <- replace(tabela2$DRŽAVA, tabela2$DRŽAVA=="Germany (until 1990 former territory of the FRG)", "Germany")
