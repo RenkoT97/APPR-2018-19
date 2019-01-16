@@ -32,5 +32,6 @@ tabela4 <- join(javni_sektor, industrija, type = "inner")
 tabela4 <- join(tabela4, javni_sektor_investicije, type = "inner") 
 tabela4 <- join(tabela4, industrija_investicije, type = "inner")
 tabela4$DRŽAVA <- gsub("Euro.*", "", tabela4$DRŽAVA)
+tabela4 <- subset(tabela4, DRŽAVA!="")
 
 tabela4$DRŽAVA <- replace(tabela4$DRŽAVA, tabela4$DRŽAVA=="Germany (until 1990 former territory of the FRG)", "Germany")
