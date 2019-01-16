@@ -66,6 +66,14 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
   - `DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV` - meritev: (število),
   - `DAVKI NA PROMET V MILIJONIH EVROV` - meritev: (število),
   - `OKOLJSKI DAVKI V MILIJONIH EVROV` - meritev: (število).
+  
+4. `Denar za varovanje okolja` - tekoči izdatki in investicije v deležu BDP, ki ga država namenja za ohranjanje okolja
+  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
+  - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
+  - `DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA` - meritev: (število),
+  - `DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE` - meritev: (število),
+  - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` - meritev: (število),
+  - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI` - meritev: (število).
 
 ***
 
@@ -73,12 +81,6 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
 
 ```{r vizualizacija1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 source("vizualizacija/vizualizacija1.r", encoding="UTF-8")
-```
-
-Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo.
-
-```{r graf1, echo=FALSE, message=FALSE, warning=FALSE}
-graf1
 ```
 
 Spodnji graf primerja GDP per habita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno.
