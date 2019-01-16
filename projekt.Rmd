@@ -101,7 +101,6 @@ map
 
 Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi.
 
-print(tortni_diagram)
 ```{r tortni_diagram, echo=FALSE, message=FALSE, warning=FALSE}
 tortni_diagram
 ```
