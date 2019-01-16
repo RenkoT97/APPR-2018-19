@@ -2,12 +2,12 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Tjaša Renko"
 output:
+  html_document: default
   pdf_document:
     keep_tex: true
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-  html_document: default
 ---
 
 
