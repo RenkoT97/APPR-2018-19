@@ -82,31 +82,31 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
 ```{r vizualizacija1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 source("vizualizacija/vizualizacija1.r", encoding="UTF-8")
 ```
-Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo.
+Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo, kar gre pripisati zavedanju o nevarnosti globalnega segrevanja. Večjih odstopanj ni.
 
 ```{r graf1, echo=FALSE, message=FALSE, warning=FALSE}
 graf1
 ```
 
-Spodnji graf primerja GDP per habita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno.
+Spodnji graf primerja GDP per capita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno.
 
 ```{r graf2, echo=FALSE, message=FALSE, warning=FALSE}
 graf2
 ```
 
-Naslednji graf prikazuje odstotek GDP Evropskih držav, namenjen investicijam za varovanje okolja, med leti 2007 in 2013.
+Naslednji graf prikazuje odstotek GDP Evropskih držav, namenjen investicijam za varovanje okolja, med leti 2007 in 2013. Podatki v splošnem ne ustrezajo nobenemu vzorcu, iz njih je težko kaj sklepati. Opazimo pa lahko nenavaden upad investiranja v varovanje okolja v Litvi po letu 2010. Morda ni naključje, da se čas padca investicij sklada z začetkom globalne recesije. Litvin GDP v njej ni bil prizadet, kar lahko morda pripišemo hitremu odzivu in krčenju sredstev za varovanje okolja in podobno. Nenavadno je, da je Litva ravno to leto uvedla spremembe v skladu za okoljske investicije. Verjetno je to glavni razlog za spremembo, a podatkov o točnem dogajanju s skladom ne najdem.
 
 ```{r graf3, echo=FALSE, message=FALSE, warning=FALSE}
 graf3
 ```
 
-Spodnji zemljevid prikazuje letne emisije vseh toplogrednih plinov posameznih držav v tonah na prebivalca, merjene v letu 2013.
+Spodnji zemljevid prikazuje letne emisije vseh toplogrednih plinov posameznih držav v tonah na prebivalca, merjene v letu 2013. Večje odstopanje navzgor opazimo pri Estoniji. Preverila sem podatke in ugotovila, da je v resnici od leta 1990 procentualno najbolj znižala količino izpustov. Opazila sem tudi, da je Rusija med 10 največjimi svetovnimi onesnaževalkami. Glede na to, da je imela do nedavnega velik vpliv na pribaltske države, bi razlog za estonske emisije lahko iskali tu. Na splošno izgleda, da države v toplejšem podnebju v zrak izpustijo manj emisij, kar je smiselno, saj porabijo manj za ogrevanje. Izjema je Švedska, ki več kot polovico porabljene energije pridobi iz obnovljivih virov.
 
 ```{r map, echo=FALSE, message=FALSE, warning=FALSE}
 map
 ```
 
-Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi.
+Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi. Ne opazimo posebnih odstopanj; kot pričakovano manjše države prispevajo manjši delež pobranih davkov.
 
 ```{r tortni_diagram, echo=FALSE, message=FALSE, warning=FALSE}
 tortni_diagram
