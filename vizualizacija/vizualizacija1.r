@@ -49,24 +49,25 @@ Evropa <- filter(zemljevid, CONTINENT == "Europe" |NAME == "Turkey")
 Evropa <- filter(Evropa, long < 55 & long > -45 & lat > 30 & lat < 85)
 
 podatki_tortni <- filter(tabela3, LETO =="2013")
+vrstica <- c(DRZAVA="France", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
+                      "DAVKI NA ONESNAZEVANJE V MILIJONIH EVROV"=NA, "DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV"=NA,
+                      "DAVKI NA PROMET V MILIJONIH EVROV"=NA, "OKOLJSKI DAVKI V MILIJONIH EVROV"="5859.00")
+podatki_tortni <- rbind(podatki_tortni, vrstica)
 
 graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color="Države")
 
 tabela1 %>% group_by(DRZAVA) %>% do(draw(.))
 
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
-#print(graf1)
 
 graf2 <- ggplot(data.frame()) +aes(x=a$"GDP NA PREBIVALCA V EVRIH", y=a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA") + geom_point()
 graf2 <- graf2 + xlab("GDP per habita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV")
-#print(graf2)
 
 graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Države")
 
 tabela4 %>% group_by(DRZAVA) %>% do(draw2(.))
 
 graf3 <- graf3 + xlab("LETO") + ylab("ODSTOTEK GDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA") + ggtitle("INVESTICIJE")
-#print(graf3)
 
 ggplot(Evropa, aes(x=long, y=lat, group=group, fill=NAME)) + 
   geom_polygon() + 
@@ -77,7 +78,6 @@ map <- ggplot() + geom_polygon(data=left_join(Evropa, b), aes(x=long, y=lat, gro
 map <- map + theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
                    axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank())
 map <- map + ggtitle("LETNE EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA")
-#print(map)
 
 priprava_tortni <- ggplot(podatki_tortni, aes(x="", y=podatki_tortni$"OKOLJSKI DAVKI V MILIJONIH EVROV", fill=DRZAVA))+
   geom_bar(width = 1, stat = "identity")
