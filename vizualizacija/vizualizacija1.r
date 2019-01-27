@@ -61,7 +61,8 @@ tabela1 %>% group_by(DRZAVA) %>% do(draw(.))
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
 
 graf2 <- ggplot(data.frame()) +aes(x=a$"GDP NA PREBIVALCA V EVRIH", y=a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA") + geom_point()
-graf2 <- graf2 + xlab("GDP per habita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV")
+graf2 <- graf2 + xlab("GDP per habita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV") +
+  geom_smooth(method = "lm")
 
 graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Države")
 
@@ -86,3 +87,4 @@ tortni_diagram <- priprava_tortni + coord_polar("y", start=0) +
   theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank(),
   axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
   ggtitle("DELEŽ POBRANIH OKOLJSKIH DAVKOV PO DRŽAVAH")
+
