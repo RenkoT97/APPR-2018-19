@@ -26,11 +26,10 @@ ui <-
   pageWithSidebar(
     headerPanel('Izpusti toplogrednih plinov'),
     sidebarPanel(
-      #selectInput('xcol', 'X Variable', names(a)),
       selectInput('ycol', 'Spremenljivka na y osi', tail(names(tabela1),-2),
                   selected=names(tabela1)[[2]]),
-      numericInput('clusters', 'Število skupin', 3,
-                   min = 1, max = 6)
+      numericInput('clusters', 'Število skupin', 4,
+                   min = 1, max = 10)
     ),
     mainPanel(
       plotOutput('plot1')
