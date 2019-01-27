@@ -115,8 +115,10 @@ tortni_diagram
 
 # Napredna analiza podatkov
 
-```{r shiny, echo=FALSE, message=FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
+```{r shiny, echo=FALSE, message=FALSE, warning=FALSE}
+source("shiny/shiny.R", encoding="UTF-8")
+runGadget(ui, server = server, port = getOption("shiny.port"),
+          viewer = paneViewer(), stopOnCancel = TRUE)
 ```
 
 ***
