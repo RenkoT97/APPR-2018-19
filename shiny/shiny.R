@@ -25,7 +25,9 @@ server <- function(input, output, session) {
 ui <- 
   
   pageWithSidebar(
+    
     headerPanel('Izpusti toplogrednih plinov'),
+    
     sidebarPanel(
       selectInput('ycol', 'Spremenljivka na y osi', tail(names(tabela1),-2), selected=names(tabela1)[[2]]),
       numericInput('clusters', 'Stevilo skupin', 4, min = 1, max = 10)
@@ -33,8 +35,5 @@ ui <-
     mainPanel = (
       plotOutput('graf1')
     )
+    
   )
-
-runGadget(ui, server = server, port = getOption("shiny.port"),
-          viewer = paneViewer(), stopOnCancel = TRUE)
-

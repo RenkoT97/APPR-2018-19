@@ -119,8 +119,7 @@ Iz prejšnjih in spodnjega grafa lahko sklepamo, da se bo izpust toplogrednih pl
 
 ```{r shiny, echo=FALSE, message=FALSE, warning=FALSE}
 source("shiny/shiny.R", encoding="WINDOWS-1252")
-runGadget(ui, server = server, port = getOption("shiny.port"),
-          viewer = paneViewer(), stopOnCancel = TRUE)
+shinyApp(ui = ui, server = server)
 ```
 
 ***
