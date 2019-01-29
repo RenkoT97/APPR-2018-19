@@ -29,7 +29,7 @@ ui <-
     sidebarPanel(
       selectInput('ycol', 'Spremenljivka na y osi', tail(names(tabela1),-2),
                   selected=names(tabela1)[[2]]),
-      numericInput('clusters', 'Število skupin', 4,
+      numericInput('clusters', 'Stevilo skupin', 4,
                    min = 1, max = 10)
     ),
     mainPanel = (
