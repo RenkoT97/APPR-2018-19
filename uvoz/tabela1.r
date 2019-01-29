@@ -3,17 +3,17 @@ library(reshape2)
 library(dplyr)
 library(eurostat)
 
-emisijeCO2 <- read_csv("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/podatki/emisijeCO2.csv", na=c(":"))
+emisijeCO2 <- read_csv("podatki/emisijeCO2.csv", na=c(":"))
 emisijeCO2 <- emisijeCO2[-c(1:10),]
 emisijeCO2 <- emisijeCO2[,-c(3,4,5,7)]
 names(emisijeCO2) <- (c("LETO", "DRZAVA", "EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH"))
 
-emisijeCH4 <- read_csv("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/podatki/emisijeCH4.csv", na = c(":"))
+emisijeCH4 <- read_csv("podatki/emisijeCH4.csv", na = c(":"))
 emisijeCH4 <- emisijeCH4[-c(1:10),]
 emisijeCH4 <- emisijeCH4[,-c(3,4,5,7)]
 names(emisijeCH4) <- (c("LETO", "DRZAVA", "EMISIJE METANA V TONAH"))
 
-emisijeNO <- read_csv("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/podatki/emisijeNO.csv", na = c(":"))
+emisijeNO <- read_csv("podatki/emisijeNO.csv", na = c(":"))
 emisijeNO <- emisijeNO[-c(1:10),]
 emisijeNO <- emisijeNO[,-c(3,4,5,7)]
 names(emisijeNO) <- (c("LETO", "DRZAVA", "EMISIJE DUSIKOVEGA OKSIDA V TONAH"))

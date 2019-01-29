@@ -8,10 +8,10 @@ library("ggplot2")
 library("munsell")
 library("reshape2")
 
-source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela1.r", encoding="UTF-8")
-source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela2.r", encoding="UTF-8")
-source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela3.r", encoding="UTF-8")
-source("https://raw.githubusercontent.com/RenkoT97/APPR-2018-19/master/uvoz/tabela4.r", encoding="UTF-8")
+source("uvoz/tabela1.r", encoding="UTF-8")
+source("uvoz/tabela2.r", encoding="UTF-8")
+source("uvoz/tabela3.r", encoding="UTF-8")
+source("uvoz/tabela4.r", encoding="UTF-8")
 source("https://raw.githubusercontent.com/jaanos/APPR-2018-19/master/lib/uvozi.zemljevid.r")
 
 draw <- function(tab) {
