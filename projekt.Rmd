@@ -29,7 +29,7 @@ source("lib/rstudio.r", encoding="UTF-8")
 
 # Izbira teme
 
-Za svojo projektno nalogo bom analizirala izpuste toplogrednih plinov po Evropi. Primerjala bom razvitost držav (BDP) z 
+Za svojo projektno nalogo bom analizirala izpuste toplogrednih plinov po Evropi. Primerjala bom razvitost držav (GDP) z 
 okoljskimi davki in letnimi izpusti.
 
 ***
@@ -115,8 +115,10 @@ tortni_diagram
 
 # Napredna analiza podatkov
 
+Iz prejšnjih in spodnjega grafa lahko sklepamo, da se bo izpust toplogrednih plinov še naprej zmanjševal, a vedno počasneje. To je smiselno, saj z nadaljevanjem prvotnih ukrepov lahko le ohranjamo sedanjo raven emisij, za nadaljno zmanjšanje izpustov pa je potrebno vpeljevati vedno bolj drastične ukrepe. Opazimo zaskrbljujoče dejstvo, da sta razvitost države in količina emisij v obratnem sorazmerju. Razlog za to je verjetno, da v protiukrepih niso toliko bolj učinkoviti od manj razvitih držav, da bi zakrili povečano aktivnost v industriji. Iz grafov lahko razberemo tudi, da po Evropi ni posebnih odstopanj v denarju, namenjenemu varovanju okolja; to je sorazmerno z velikostjo države. Ker pa izpusti niso sorazmerni, lahko vidimo, da se da tudi brez povečanja okoljskega proračuna z ukrepi, kot so uvajanje obnovljivih virov energije (glej Švedsko) in ukrepi, kot so menjava zasebnega z javnim prometom ter določenimi spremembami v industriji, veliko narediti.
+
 ```{r shiny, echo=FALSE, message=FALSE, warning=FALSE}
-source("shiny/shiny.R", encoding="UTF-8")
+source("shiny/shiny.R", encoding="WINDOWS-1252")
 runGadget(ui, server = server, port = getOption("shiny.port"),
           viewer = paneViewer(), stopOnCancel = TRUE)
 ```
