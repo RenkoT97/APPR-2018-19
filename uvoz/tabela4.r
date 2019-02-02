@@ -35,3 +35,15 @@ tabela4$DRZAVA <- gsub("Euro.*", "", tabela4$DRZAVA)
 tabela4 <- subset(tabela4, DRZAVA!="")
 
 tabela4$DRZAVA <- replace(tabela4$DRZAVA, tabela4$DRZAVA=="Germany (until 1990 former territory of the FRG)", "Germany")
+
+DRZAVA <- c(unique(tabela4$DRZAVA))
+c2 <- c("Avstrija", "Belgija", "Bolgarija", "Češka", "Nemčija", "Estonija",
+        "Španija", "Finska", "Francija", "Hrvaška", "Madžarska", "Italija",
+        "Litva", "Latvija", "Nizozemska", "Poljska", "Portugalska", "Romunija",
+        "Srbija", "Švedska", "Slovenija", "Slovaška", "Turčija", "Velika Britanija",
+        "Norveška", "Ciper")
+c3 <- data.frame(DRZAVA,c2)
+tabela4 <- left_join(tabela4, c3)
+tabela4 <- tabela4[-c(1)]
+tabela4 <- tabela4[c(6,1,2,3,4,5)]
+names(tabela4)[1] <- "DRZAVA"

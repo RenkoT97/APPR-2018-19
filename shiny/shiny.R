@@ -12,7 +12,7 @@ server <- function(input, output, session) {
     kmeans(podatki(), input$clusters)
   })
   
-  output$graf1 <- renderPlot({
+  output$graf <- renderPlot({
     par(mar = c(5.1, 4.1, 0, 1))
     plot(podatki(),
          col = clusters()$cluster,
@@ -33,7 +33,7 @@ ui <-
       numericInput('clusters', 'Stevilo skupin', 4, min = 1, max = 10)
     ),
     mainPanel = (
-      plotOutput('graf1')
+      plotOutput('graf')
     )
     
   )

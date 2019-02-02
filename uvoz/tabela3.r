@@ -36,3 +36,17 @@ tabela3$"OKOLJSKI DAVKI V MILIJONIH EVROV" <-
   tabela3$"DAVKI NA PROMET V MILIJONIH EVROV"
 
 tabela3$DRZAVA <- replace(tabela3$DRZAVA, tabela3$DRZAVA=="Germany (until 1990 former territory of the FRG)", "Germany")
+tabela3$DRZAVA <- gsub("Euro.*", "", tabela3$DRZAVA)
+tabela3 <- subset(tabela3, DRZAVA != "")
+
+DRZAVA <- c(unique(tabela3$DRZAVA))
+c2 <- c("Avstrija", "Švica", "Ciper", "Češka", "Nemčija", "Danska", "Estonija",
+        "Grčija", "Španija", "Finska", "Hrvaška", "Madžarska", "Irska",
+        "Italija", "Litva", "Malta", "Norveška", "Portugalska", "Romunija",
+        "Švedska", "Slovenija", "Slovaška", "Turčija", "Velika Britanija",
+        "Srbija", "Lihtenštajn")
+c3 <- data.frame(DRZAVA,c2, stringsAsFactors = FALSE)
+tabela3 <- left_join(tabela3, c3)
+tabela3 <- tabela3[-c(1)]
+tabela3 <- tabela3[c(7,1,2,3,4,5,6)]
+names(tabela3)[1] <- "DRZAVA"

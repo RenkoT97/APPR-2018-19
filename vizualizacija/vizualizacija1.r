@@ -24,7 +24,7 @@ draw2 <- function(tab) {
   return(tab)
 }
 
-slo <- filter(tabela1, DRZAVA=="Slovenia")
+slo <- filter(tabela1, DRZAVA=="Slovenija")
 LETO <- slo$LETO
 EMISIJE <- slo$"EMISIJE TOPLOGREDNIH PLINOV V TONAH"
 
@@ -49,10 +49,11 @@ Evropa <- filter(zemljevid, CONTINENT == "Europe" |NAME == "Turkey")
 Evropa <- filter(Evropa, long < 55 & long > -45 & lat > 30 & lat < 85)
 
 podatki_tortni <- filter(tabela3, LETO =="2013")
-vrstica <- c(DRZAVA="France", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
+vrstica <- c(DRZAVA="Francija", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
                       "DAVKI NA ONESNAZEVANJE V MILIJONIH EVROV"=NA, "DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV"=NA,
                       "DAVKI NA PROMET V MILIJONIH EVROV"=NA, "OKOLJSKI DAVKI V MILIJONIH EVROV"="5859.00")
 podatki_tortni <- rbind(podatki_tortni, vrstica)
+names(podatki_tortni)[1] <- "Drzave"
 
 graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color="Države")
 
@@ -61,7 +62,7 @@ tabela1 %>% group_by(DRZAVA) %>% do(draw(.))
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
 
 graf2 <- ggplot(data.frame()) +aes(x=a$"GDP NA PREBIVALCA V EVRIH", y=a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA") + geom_point()
-graf2 <- graf2 + xlab("GDP per habita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV") +
+graf2 <- graf2 + xlab("GDP per capita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV") +
   geom_smooth(method = "lm")
 
 graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Države")
@@ -80,7 +81,7 @@ map <- map + theme(axis.title.x=element_blank(), axis.text.x=element_blank(), ax
                    axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank())
 map <- map + ggtitle("LETNE EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA")
 
-priprava_tortni <- ggplot(podatki_tortni, aes(x="", y=podatki_tortni$"OKOLJSKI DAVKI V MILIJONIH EVROV", fill=DRZAVA))+
+priprava_tortni <- ggplot(podatki_tortni, aes(x="", y=podatki_tortni$"OKOLJSKI DAVKI V MILIJONIH EVROV", fill=Drzave))+
   geom_bar(width = 1, stat = "identity")
 
 tortni_diagram <- priprava_tortni + coord_polar("y", start=0) +

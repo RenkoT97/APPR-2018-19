@@ -24,3 +24,16 @@ tabela1$"EMISIJE TOPLOGREDNIH PLINOV V TONAH" <- tabela1$"EMISIJE OGLJIKOVEGA DI
 tabela1$"EMISIJE METANA V TONAH" + tabela1$"EMISIJE DUSIKOVEGA OKSIDA V TONAH"
 
 tabela1[41:50, "DRZAVA"] <- "Germany"
+
+DRZAVA <- c(unique(tabela1$DRZAVA))
+c2 <- c("Belgija", "Bolgarija", "Češka", "Danska", "Nemčija", "Estonija",
+            "Irska", "Grčija", "Španija", "Francija", "Hrvška", "Italija",
+            "Ciper", "Latvija", "Litva", "Luksemburg", "Madžarska", "Malta",
+            "Nizozemska", "Avstrija", "Poljska", "Portugalska", "Romunija",
+            "Slovenija", "Slovaška", "Finska", "Švedska", "Velika Britanija",
+            "Norveška", "Švica", "Srbija", "Turčija")
+c3 <- data.frame(DRZAVA,c2)
+tabela1 <- left_join(tabela1, c3)
+tabela1 <- tabela1[-c(2)]
+tabela1 <- tabela1[c(1,6,2,3,4,5)]
+names(tabela1)[2] <- "DRZAVA"
