@@ -39,7 +39,7 @@ names(b) <- c("SOVEREIGNT", "EMISIJE")
 
 tabela4$INVESTICIJE <- tabela4$"DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU" + tabela4$"DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI"
 
-Slov <- filter(tabela4, DRZAVA=="Slovenia")
+Slov <- filter(tabela4, DRZAVA=="Slovenija")
 
 zemljevid <- uvozi.zemljevid("https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
                              "ne_50m_admin_0_countries") %>%
