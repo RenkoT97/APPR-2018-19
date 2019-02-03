@@ -35,7 +35,7 @@ a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA" <- a$"EMISIJE TOPLOGREDNIH
 b <- a[-c(3, 4, 5, 6)] %>% filter(LETO=="2013")
 #To leto je izbrano, ker v njem ni manjkajoCih podatkov
 b <- b[-c(1)]
-names(b) <- c("SOVEREIGNT", "EMISIJE")
+names(b) <- c("DRZ1", "EMISIJE")
 
 tabela4$INVESTICIJE <- tabela4$"DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU" + tabela4$"DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI"
 
@@ -47,6 +47,16 @@ zemljevid <- uvozi.zemljevid("https://www.naturalearthdata.com/http//www.natural
 
 Evropa <- filter(zemljevid, CONTINENT == "Europe" |NAME == "Turkey")
 Evropa <- filter(Evropa, long < 55 & long > -45 & lat > 30 & lat < 85)
+SOVEREIGNT <- unique(Evropa$SOVEREIGNT)
+DRZ1 <- c("Črna Gora", "Moldavija", "Monako", "Malta", "Makedonija", "Luksemburg",
+          "Litva", "Lihtenštajn", "Latvija", "Kosovo", "Italija", "Irska", "Islandija",
+          "Madžarska", "Grčija", "Nemčija", "Francija", "Finska", "Estonija", "Danska",
+          "Češka", "Hrvaška", "Bolgarija", "Bosna in Herzegovina", "Belgija", "Belorusija",
+          "Avstrija", "Andora", "Albanija", "Velika Britanija", "Ukrajina", "Turčija",
+          "Švica", "Švedska", "Vatikan", "Španija", "Slovaška", "Slovenija", "Srbija",
+          "San Marino", "Rusija", "Romunija", "Portugalska", "Poljska", "Norveška", "Nizozemska")
+DRZ2 <- data.frame(SOVEREIGNT, DRZ1)
+Evropa <- left_join(Evropa, DRZ2)
 
 podatki_tortni <- filter(tabela3, LETO =="2013")
 vrstica <- c(DRZAVA="Francija", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
