@@ -8,7 +8,7 @@ output:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-runtime: shiny
+#runtime: shiny
 ---
 
 
@@ -119,8 +119,8 @@ Iz prejšnjih in spodnjega grafa lahko sklepamo, da se bo izpust toplogrednih pl
 
 
 ```{r shiny, echo=FALSE, message=FALSE, warning=FALSE}
-source("shiny/shiny.R", encoding="WINDOWS-1252")
-shinyApp(ui = ui, server = server)
+#source("shiny/shiny.R", encoding="WINDOWS-1252")
+#shinyApp(ui = ui, server = server)
 ```
 
 ***
