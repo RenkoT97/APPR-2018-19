@@ -83,19 +83,19 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
 ```{r vizualizacija1, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 source("vizualizacija/vizualizacija1.r", encoding="UTF-8")
 ```
-Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo, kar gre pripisati zavedanju o nevarnosti globalnega segrevanja. Večjih odstopanj ni.
+Prvi graf prikazuje letne emisije toplogrednih plinov v tonah in državah med leti 2007 in 2016. Opazimo, da povečini letne emisije posamezne države tekom danih let rahlo upadajo, kar gre pripisati zavedanju o nevarnosti globalnega segrevanja. Odstopanje opazimo pri Turčiji, ki je sicer podpisala globalne sporazume o omejitvi izpustov, a zaenkrat ne upošteva tam doseženih dogovorov, in je v zadnjem desetletju znana kot ena večjih onesnaževalk.
 
 ```{r graf1, echo=FALSE, message=FALSE, warning=FALSE}
 graf1
 ```
 
-Spodnji graf primerja GDP per capita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno.
+Spodnji graf primerja GDP per capita z letnimi emisijami toplogrednih plinov držav v tonah na prebivalca. Opazimo, da višji GDP ne pripomore k manjšim emisijam; kvečjemu obratno. Ekonomsko uspešnejše države očitno ne izrabijo presežkov denarja za vlaganja v varovanje okolja v dovoljšni meri, da bi pokrile izpuste, ki so posledica povečane industrijske dejavnosti.
 
 ```{r graf2, echo=FALSE, message=FALSE, warning=FALSE}
 graf2
 ```
 
-Naslednji graf prikazuje odstotek GDP Evropskih držav, namenjen investicijam za varovanje okolja, med leti 2007 in 2013. Podatki v splošnem ne ustrezajo nobenemu vzorcu, iz njih je težko kaj sklepati. Opazimo pa lahko nenavaden upad investiranja v varovanje okolja v Litvi po letu 2010. Morda ni naključje, da se čas padca investicij sklada z začetkom globalne recesije. Litvin GDP v njej ni bil prizadet, kar lahko morda pripišemo hitremu odzivu in krčenju sredstev za varovanje okolja in podobno. Nenavadno je, da je Litva ravno to leto uvedla spremembe v skladu za okoljske investicije. Verjetno je to glavni razlog za spremembo, a podatkov o točnem dogajanju s skladom ne najdem.
+Naslednji graf prikazuje odstotek GDP Evropskih držav, namenjen investicijam za varovanje okolja, med leti 2007 in 2013. Podatki v splošnem ne ustrezajo nobenemu vzorcu, iz njih je težko kaj sklepati. Opazimo pa lahko nenavaden upad investiranja v varovanje okolja v Litvi po letu 2010. Morda ni naključje, da se čas padca investicij sklada z začetkom globalne recesije. Litvin GDP v njej ni bil prizadet, kar lahko morda pripišemo hitremu odzivu in krčenju sredstev za varovanje okolja in podobno. Nenavadno je, da je Litva ravno to leto uvedla spremembe v skladu za okoljske investicije. Verjetno je to glavni razlog za spremembo, a podatkov o točnem dogajanju s skladom ne najdem. Opazimo tudi, da po koncu recesije Bolgarija in Hrvaška izdatno povečata proračun, namenjen investicijam. Hrvaška je povečala te, namenjene industriji, Bolgarija pa oboje, a bolj te, namenjene javnemu sektorju.
 
 ```{r graf3, echo=FALSE, message=FALSE, warning=FALSE}
 graf3
