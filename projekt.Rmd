@@ -107,13 +107,22 @@ Spodnji zemljevid prikazuje letne emisije vseh toplogrednih plinov posameznih dr
 map
 ```
 
-Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi. Ne opazimo posebnih odstopanj; kot pričakovano manjše države prispevajo manjši delež pobranih davkov.
+Na tortnem diagramu so prikazani podatki o pobranih okoljskih davkih kot deležu denarja, pobranega v ta namen, po celi Evropi. Ne opazimo posebnih odstopanj; kot pričakovano manjše države predstavljajo manjši delež pobranih davkov. Ker nobena država vidno ne odstopa v obdavčenju stvari, ki na okolje slabo vplivajo, je težje sklepati o vplivu teh davkov.
 
 ```{r tortni_diagram, echo=FALSE, message=FALSE, warning=FALSE}
 tortni_diagram
 ```
 
 # Napredna analiza podatkov
+
+Na spodnjem grafu so države razdeljene v tri skupine glede na to, kolikšen odstotek bruto domačega proizvoda namenijo varovanju okolja, kar zajema investicije in sproti porabljen denar za industrijo in javni sektor. Opazimo, da so v skupini, ki varovanju okolja nameni največji delež denarja, ne nujno najbolj razvite države EU. V njej najdemo nekaj vzhodnoevropskih držav, pa tudi Slovenijo. Nobena od njih ni med največjimi onesnaževalkami, a so tudi države, ki procentualno namenijo manj denarja v varstvo okolja, pa imajo manjše letne izpuste glede na število prebivalcev (glej zemljevid). V srednji skupini ni posebnosti, v njej najdemo povprečno razvite države s povprečnim letnim izpustom. V zadnji skupini presenetljivo najdemo Švedsko, ki je ena uspešnejših držav na področju omejevanja emisij. Ker je v preteklosti dovolj vlagala v obnovljive vire energije, sedaj očitno ne potrebuje toliko denarja za dobre rezultate, saj so se investicije iz preteklosti obrestovale. Pričakovano najdemo tudi večje onesnaževalke, kot sta Turčija in Estonija.
+
+```{r analiza, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+source("analiza/analiza.r", encoding="UTF-8")
+graf4
+```
+
+# Zaključek
 
 Iz prejšnjih in spodnjega grafa lahko sklepamo, da se bo izpust toplogrednih plinov še naprej zmanjševal, a vedno počasneje. To je smiselno, saj z nadaljevanjem prvotnih ukrepov lahko le ohranjamo sedanjo raven emisij, za nadaljno zmanjšanje izpustov pa je potrebno vpeljevati vedno bolj drastične ukrepe. Opazimo zaskrbljujoče dejstvo, da sta razvitost države in količina emisij v obratnem sorazmerju. Razlog za to je verjetno, da v protiukrepih niso toliko bolj učinkoviti od manj razvitih držav, da bi zakrili povečano aktivnost v industriji. Iz grafov lahko razberemo tudi, da po Evropi ni posebnih odstopanj v denarju, namenjenemu varovanju okolja; to je sorazmerno z velikostjo države. Ker pa izpusti niso sorazmerni, lahko vidimo, da se da tudi brez povečanja okoljskega proračuna z ukrepi, kot so uvajanje obnovljivih virov energije (glej Švedsko) in ukrepi, kot so menjava zasebnega z javnim prometom ter določenimi spremembami v industriji, veliko narediti. Spodaj lahko opazimo tudi, da ja napredek veliko opaznejši pri zmanjšanju izpustov metana. Največ le-tega nastane v prometu in živinoreji. Ker emisije ogljikovega dioksida, ki prav tako nastaja v prometu, sicer tudi v industriji, niso upadle niti približno toliko, lahko sklepamo, da je Evropska unija naredila velik napredek pri izpustih glede živinoreje.
 
