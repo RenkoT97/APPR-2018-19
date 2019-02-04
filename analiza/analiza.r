@@ -1,11 +1,19 @@
-# 4. faza: Analiza podatkov
+library("factoextra")
+source("uvoz/tabela4.r", encoding="UTF-8")
 
-podatki <- obcine %>% transmute(obcina, povrsina, gostota,
-                                gostota.naselij=naselja/povrsina) %>%
-  left_join(povprecja, by="obcina")
-row.names(podatki) <- podatki$obcina
-podatki$obcina <- NULL
+podatki <- na.omit(tabela4)
+podatki$"DELEŽ GDP" <- podatki$`DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA` +
+  podatki$`DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE` +
+  podatki$`DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` +
+  podatki$`DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI`
+podatki <- na.omit(podatki)[-c(3,4,5,6)]
+podatki$"DELEŽ GDP" <- 10000 * podatki$"DELEŽ GDP"
+podatki$vrstice <- paste(podatki$DRZAVA, podatki$LETO, sep =", ")
+rownames(podatki) <- podatki[,4]
+podatki <- podatki[-c(1,4)]
 
-# Å tevilo skupin
-n <- 5
-skupine <- hclust(dist(scale(podatki))) %>% cutree(n)
+fviz_nbclust(podatki, kmeans, method = "gap_stat")
+neki <- kmeans(podatki, 3)
+graf4 <- fviz_cluster(neki, data = podatki, main = "DELEŽ GDP, NAMENJEN VAROVANJU OKOLJA IN INVESTICIJAM VANJ",
+             ellipse.type = "convex",
+             ggtheme = theme_minimal())
