@@ -128,7 +128,7 @@ Iz prejšnjih in spodnjega grafa lahko sklepamo, da se bo izpust toplogrednih pl
 
 ```{r shiny, echo=FALSE, message=FALSE, warning=FALSE}
 source("shiny/shiny.R", encoding="WINDOWS-1252")
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, options=list(width="100%", height=1000))
 ```
 
 Če bi Evropa nadaljevala s podobno dinamiko, bi se sodeč po zgornji vizualizaciji padec emisij sčasoma ustavil (razloženo zgoraj). Vidimo, kako močen pomen imajo dobro sestavljeni podnebni sporazumi in po relativno neuspešnem kjotskem iz leta 2005 je nadaljno spreminjanje letnih izpustov močno odvisno od implementacije pariškega, ki je stopil v veljavo pred dobrima dvema letoma.

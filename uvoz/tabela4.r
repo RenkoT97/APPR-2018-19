@@ -1,6 +1,5 @@
 library(eurostat)
 library(dplyr)
-library(plyr)
 
 tab <- get_eurostat('ten00049', time_format = "num", type = "label", stringsAsFactors = FALSE)
 tab <- filter(tab, time > 2006)
@@ -28,9 +27,9 @@ industrija_investicije <- filter(tab2, env_exp == "Total environmental investmen
 industrija_investicije <- industrija_investicije[-c(1)]
 names(industrija_investicije) <- c("DRZAVA", "LETO", "DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI")
 
-tabela4 <- join(javni_sektor, industrija, type = "inner")
-tabela4 <- join(tabela4, javni_sektor_investicije, type = "inner") 
-tabela4 <- join(tabela4, industrija_investicije, type = "inner")
+tabela4 <- inner_join(javni_sektor, industrija)
+tabela4 <- inner_join(tabela4, javni_sektor_investicije) 
+tabela4 <- inner_join(tabela4, industrija_investicije)
 tabela4$DRZAVA <- gsub("Euro.*", "", tabela4$DRZAVA)
 tabela4 <- subset(tabela4, DRZAVA!="")
 

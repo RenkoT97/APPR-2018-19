@@ -8,10 +8,6 @@ library("ggplot2")
 library("munsell")
 library("reshape2")
 
-source("uvoz/tabela1.r", encoding="UTF-8")
-source("uvoz/tabela2.r", encoding="UTF-8")
-source("uvoz/tabela3.r", encoding="UTF-8")
-source("uvoz/tabela4.r", encoding="UTF-8")
 source("https://raw.githubusercontent.com/jaanos/APPR-2018-19/master/lib/uvozi.zemljevid.r")
 
 draw <- function(tab) {
@@ -59,15 +55,27 @@ DRZ2 <- data.frame(SOVEREIGNT, DRZ1)
 Evropa <- left_join(Evropa, DRZ2)
 
 podatki_tortni <- filter(tabela3, LETO =="2013")
-vrstica <- c(DRZAVA="Francija", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
-                      "DAVKI NA ONESNAZEVANJE V MILIJONIH EVROV"=NA, "DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV"=NA,
-                      "DAVKI NA PROMET V MILIJONIH EVROV"=NA, "OKOLJSKI DAVKI V MILIJONIH EVROV"="5859.00")
-podatki_tortni <- rbind(podatki_tortni, vrstica)
+vrstica1 <- c(DRZAVA="Francija", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
+              "DAVKI NA ONESNAZEVANJE V MILIJONIH EVROV"=NA, "DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV"=NA,
+              "DAVKI NA PROMET V MILIJONIH EVROV"=NA, "OKOLJSKI DAVKI V MILIJONIH EVROV"="5859.00")
+število = as.numeric(podatki_tortni[3,7]) + as.numeric(podatki_tortni[4,7]) + as.numeric(podatki_tortni[24,7]) +
+  as.numeric(podatki_tortni[21,7]) + as.numeric(podatki_tortni[18,7]) + as.numeric(podatki_tortni[15,7]) +
+  as.numeric(podatki_tortni[17,7])
+vrstica2 <- c(DRZAVA="Drugo", LETO="2013", "DAVKI NA ENERGIJO V MILIJONIH EVROV"=NA, 
+             "DAVKI NA ONESNAZEVANJE V MILIJONIH EVROV"=NA, "DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV"=NA,
+             "DAVKI NA PROMET V MILIJONIH EVROV"=NA, "OKOLJSKI DAVKI V MILIJONIH EVROV"=število)
+podatki_tortni <- rbind(podatki_tortni, vrstica1)
+podatki_tortni <- rbind(podatki_tortni, vrstica2)
+podatki_tortni <- podatki_tortni[-c(3,4,24,21,18,15,17),]
 names(podatki_tortni)[1] <- "Drzave"
 
 graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color="Države")
 
-tabela1 %>% group_by(DRZAVA) %>% do(draw(.))
+tabgraf1 <- subset(tabela1, DRZAVA=="Slovenija"|DRZAVA=="Velika Britanija"|DRZAVA=="Luksemburg"|
+                     DRZAVA=="Švedska"|DRZAVA=="Estonija"|DRZAVA=="Turčija"|DRZAVA=="Litva"|
+                     DRZAVA=="Bolgarija"|DRZAVA=="Hrvaška"|DRZAVA=="Nemčija"|DRZAVA=="Španija"|
+                   DRZAVA=="Francija")
+tabgraf1 %>% group_by(DRZAVA) %>% do(draw(.))
 
 graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
 
@@ -77,7 +85,11 @@ graf2 <- graf2 + xlab("GDP per capita") + ylab("LETNE EMISIJE V TONAH NA PREBIVA
 
 graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Države")
 
-tabela4 %>% group_by(DRZAVA) %>% do(draw2(.))
+tabgraf3 <- subset(tabela4, DRZAVA=="Slovenija"|DRZAVA=="Velika Britanija"|DRZAVA=="Luksemburg"|
+                     DRZAVA=="Švedska"|DRZAVA=="Estonija"|DRZAVA=="Turčija"|DRZAVA=="Litva"|
+                     DRZAVA=="Bolgarija"|DRZAVA=="Hrvaška"|DRZAVA=="Nemčija"|DRZAVA=="Španija"|
+                     DRZAVA=="Francija")
+tabgraf3 %>% group_by(DRZAVA) %>% do(draw2(.))
 
 graf3 <- graf3 + xlab("LETO") + ylab("ODSTOTEK GDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA") + ggtitle("INVESTICIJE")
 
@@ -99,3 +111,4 @@ tortni_diagram <- priprava_tortni + coord_polar("y", start=0) +
   axis.title.y=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank()) +
   ggtitle("DELEŽ POBRANIH OKOLJSKIH DAVKOV PO DRŽAVAH")
 
+tabela4 <- tabela4[-c(7)]

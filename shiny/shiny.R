@@ -1,5 +1,4 @@
 library(shiny)
-source("uvoz/tabela1.r", encoding="UTF-8")
 tabela1 <- na.omit(tabela1)
 
 server <- function(input, output, session) {
