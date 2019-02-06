@@ -37,3 +37,10 @@ tabela1 <- left_join(tabela1, c3)
 tabela1 <- tabela1[-c(2)]
 tabela1 <- tabela1[c(1,6,2,3,4,5)]
 names(tabela1)[2] <- "DRZAVA"
+
+prvatabela <- melt(tabela1, id.vars = c("LETO", "DRZAVA"), measure.vars = c("EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH",
+                                                              "EMISIJE METANA V TONAH",
+                                                              "EMISIJE DUSIKOVEGA OKSIDA V TONAH",
+                                                              "EMISIJE TOPLOGREDNIH PLINOV V TONAH"))
+names(prvatabela)[3] <- "VRSTAEMISIJ"
+names(prvatabela)[4] <- "KOLICINAEMISIJ"

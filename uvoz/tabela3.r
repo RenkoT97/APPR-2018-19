@@ -1,4 +1,5 @@
 library(eurostat)
+library(reshape2)
 
 okoljski_davki <- get_eurostat("env_ac_tax", time_format = "num", type = "label", stringsAsFactors = FALSE)
 okoljski_davki <- subset(okoljski_davki, time > 2006)
@@ -50,3 +51,10 @@ tabela3 <- left_join(tabela3, c3)
 tabela3 <- tabela3[-c(1)]
 tabela3 <- tabela3[c(7,1,2,3,4,5,6)]
 names(tabela3)[1] <- "DRZAVA"
+
+tretjatabela <- melt(tabela3, id.vars = c("LETO", "DRZAVA"), measure.vars = c("DAVKI NA ENERGIJO V MILIJONIH EVROV",
+                     "DAVKI NA ONESNAZEVANJE V MILIJONIH EVROV", "DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV",
+                     "DAVKI NA PROMET V MILIJONIH EVROV", "OKOLJSKI DAVKI V MILIJONIH EVROV"))
+
+names(tretjatabela)[3] <- "VRSTADAVKOV"
+names(tretjatabela)[4] <- "KOLICINADAVKOV"

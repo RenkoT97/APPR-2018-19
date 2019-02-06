@@ -11,7 +11,7 @@ library("reshape2")
 source("https://raw.githubusercontent.com/jaanos/APPR-2018-19/master/lib/uvozi.zemljevid.r")
 
 draw <- function(tab) {
-  graf1 <<- graf1 + geom_line(aes(x=LETO, y=tab$"EMISIJE TOPLOGREDNIH PLINOV V TONAH", color=tab$DRZAVA))
+  graf1 <<- graf1 + geom_line(aes(x=tab$LETO, y=tab$"EMISIJE TOPLOGREDNIH PLINOV V TONAH", color=tab$DRZAVA))
   return(tab)
 }
 
@@ -19,10 +19,6 @@ draw2 <- function(tab) {
   graf3 <<- graf3 + geom_line(aes(x=tab$LETO, y=tab$INVESTICIJE, color=tab$DRZAVA))
   return(tab)
 }
-
-slo <- filter(tabela1, DRZAVA=="Slovenija")
-LETO <- slo$LETO
-EMISIJE <- slo$"EMISIJE TOPLOGREDNIH PLINOV V TONAH"
 
 a <- inner_join(tabela1, tabela2)
 a <- a[-c(3, 4, 5)]
@@ -75,9 +71,11 @@ tabgraf1 <- subset(tabela1, DRZAVA=="Slovenija"|DRZAVA=="Velika Britanija"|DRZAV
                      DRZAVA=="Švedska"|DRZAVA=="Estonija"|DRZAVA=="Turčija"|DRZAVA=="Litva"|
                      DRZAVA=="Bolgarija"|DRZAVA=="Hrvaška"|DRZAVA=="Nemčija"|DRZAVA=="Španija"|
                    DRZAVA=="Francija")
+tabgraf1[c(6)] <- tabgraf1[c(6)] / 1000000
 tabgraf1 %>% group_by(DRZAVA) %>% do(draw(.))
 
-graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV")
+graf1 <- graf1 + ggtitle("EMISIJE TOPLOGREDNIH PLINOV") + ylab("EMISIJE (V MILIJONIH TON)") +
+  xlab("LETO")
 
 graf2 <- ggplot(data.frame()) +aes(x=a$"GDP NA PREBIVALCA V EVRIH", y=a$"EMISIJE TOPLOGREDNIH PLINOV V TONAH NA PREBIVALCA") + geom_point()
 graf2 <- graf2 + xlab("GDP per capita") + ylab("LETNE EMISIJE V TONAH NA PREBIVALCA") + ggtitle("VPLIV GDP NA EMISIJE TOPLOGREDNIH PLINOV") +

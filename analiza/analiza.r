@@ -1,15 +1,12 @@
 library("factoextra")
+library("reshape2")
 
-podatki <- na.omit(tabela4)
-podatki$"DELEŽ GDP" <- podatki$`DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA` +
-  podatki$`DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE` +
-  podatki$`DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` +
-  podatki$`DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI`
-podatki <- na.omit(podatki)[-c(3,4,5,6)]
-podatki$"DELEŽ GDP" <- 10000 * podatki$"DELEŽ GDP"
-imenavrstic <- paste(podatki$DRZAVA, podatki$LETO, sep =", ")
-podatki <- podatki[-c(1)]
-rownames(podatki) <- imenavrstic
+podatki <- dcast(cetrtatabela, DRZAVA + LETO ~ NAMENPORABEGDP)
+rownames(podatki) <- paste(podatki$DRZAVA, podatki$LETO, sep =", ")
+podatki <- na.omit(podatki)[-c(1,2)]
+podatki$`DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA` <- podatki$`DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA` + podatki$`DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE`
+podatki$`DELEŽ BDP, NAMENJEN INVESTICIJAM V VAROVANJE OKOLJA` <- podatki$`DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` + podatki$`DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI`
+podatki <- podatki[-c(1,2,3,4)]
 
 fviz_nbclust(podatki, kmeans, method = "gap_stat")
 neki <- kmeans(podatki, 3)

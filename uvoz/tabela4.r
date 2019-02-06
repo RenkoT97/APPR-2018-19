@@ -1,5 +1,6 @@
 library(eurostat)
 library(dplyr)
+library(reshape2)
 
 tab <- get_eurostat('ten00049', time_format = "num", type = "label", stringsAsFactors = FALSE)
 tab <- filter(tab, time > 2006)
@@ -46,3 +47,11 @@ tabela4 <- left_join(tabela4, c3)
 tabela4 <- tabela4[-c(1)]
 tabela4 <- tabela4[c(6,1,2,3,4,5)]
 names(tabela4)[1] <- "DRZAVA"
+
+cetrtatabela <- melt(tabela4, id.vars = c("DRZAVA", "LETO"), measure.vars = c("DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA",
+                                                                              "DELEZ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE",
+                                                                              "DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU",
+                                                                              "DELEZ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI"))
+
+names(cetrtatabela)[3] <- "NAMENPORABEGDP"
+names(cetrtatabela)[4] <- "ODSTOTEKGDP"

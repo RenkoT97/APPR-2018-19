@@ -1,5 +1,9 @@
 library(shiny)
 tabela1 <- na.omit(tabela1)
+tabela1[c(3,4,5,6)] <- tabela1[c(3,4,5,6)] / 1000000
+names(tabela1) <- c("LETO", "DRZAVA", "EMISIJE OGLJIKOVEGA DIOKSIDA V MILIJONIH TON",
+                    "EMISIJE METANA V MILIJONIH TON", "EMISIJE DUSIKOVEGA OKSIDA V TONAH",
+                    "EMISIJE TOPLOGREDNIH PLINOV V TONAH")
 
 server <- function(input, output, session) {
   

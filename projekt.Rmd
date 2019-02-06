@@ -48,33 +48,27 @@ Uvozila sem podatke o državah v obliki CSV in s pomočjo paketa Eurostat iz spl
 1. `Letni izpusti toplogrednih plinov` - podatki za posamezen plin, državo in leto
   - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
   - `DRŽAVA` - spremenljivka: ime države (neurejen faktor),
-  - `EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH` - meritev: letni izpust v določeni državi (število),
-  - `EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH` - meritev: letni izpust v določeni državi (število),
-  - `EMISIJE OGLJIKOVEGA DIOKSIDA V TONAH` - meritev: letni izpust v določeni državi (število).
+  - `VRSTA EMISIJ` - spremenljivka: vrsta plina (neurejen faktor),
+  - `KOLIČINA EMISIJ` - meritev: letni izpust v določeni državi (število).
 
 2. `Pregled držav` - splošni podatki, pripravljeni za primerjanje
-  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
+  - `DRŽAVA` - spremenljivka: ime države (neurejen faktor),
   - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
   - `ŠTEVILO PREBIVALCEV` - meritev: število prebivalcev določene države v določenem letu (število),
   - `GDP V MILIJONIH EVROV` - meritev: bruto domači proizvod določene države v določenem letu (število),
   - `GDP NA PREBIVALCA V EVRIH` - meritev: bruto domači proizvod na prebivalca določene države v določenem letu (število).
   
 3. `Okoljski davki` - pregled obdavčitev dejavnosti, ki slabo vplivajo na okolje
-  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
   - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
-  - `DAVKI NA ENERGIJO V MILIJONIH EVROV` - meritev: (število),
-  - `DAVKI NA ONESNAŽEVANJE V MILIJONIH EVROV` - meritev: (število),
-  - `DAVKI NA RABO NARAVNIH VIROV V MILIJONIH EVROV` - meritev: (število),
-  - `DAVKI NA PROMET V MILIJONIH EVROV` - meritev: (število),
-  - `OKOLJSKI DAVKI V MILIJONIH EVROV` - meritev: (število).
+  - `DRŽAVA` - spremenljivka: ime države (neurejen faktor),
+  - `VRSTA DAVKOV` - spremenljivka: (neurejen faktor),
+  - `KOLIČINA DAVKOV` - meritev: (število).
   
 4. `Denar za varovanje okolja` - tekoči izdatki in investicije v deležu BDP, ki ga država namenja za ohranjanje okolja
-  - `DRŽAVA` - spremenljivka: ime države(neurejen faktor),
+  - `DRŽAVA` - spremenljivka: ime države (neurejen faktor),
   - `LETO` - spremenljivka: leto, v katerem gledamo podatke (število),
-  - `DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU JAVNEGA SEKTORJA` - meritev: (število),
-  - `DELEŽ BDP, NAMENJEN VAROVANJU OKOLJA V OKVIRU INDUSTRIJE` - meritev: (število),
-  - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V JAVNEM SEKTORJU` - meritev: (število),
-  - `DELEŽ BDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA, PORABLJENIM V INDUSTRIJI` - meritev: (število).
+  - `NAMEN PORABE GDP` - spremenljivka: (naurejen faktor),
+  - `ODSTOTEK GDP` - meritev: (število).
 
 ***
 
@@ -128,9 +122,8 @@ Iz prejšnjih in spodnjega grafa lahko sklepamo, da se bo izpust toplogrednih pl
 
 ```{r shiny, echo=FALSE, message=FALSE, warning=FALSE}
 source("shiny/shiny.R", encoding="WINDOWS-1252")
-shinyApp(ui = ui, server = server, options=list(width="100%", height=1000))
+shinyApp(ui = ui, server = server, options=list(width="100%", height=750))
 ```
-
 Če bi Evropa nadaljevala s podobno dinamiko, bi se sodeč po zgornji vizualizaciji padec emisij sčasoma ustavil (razloženo zgoraj). Vidimo, kako močen pomen imajo dobro sestavljeni podnebni sporazumi in po relativno neuspešnem kjotskem iz leta 2005 je nadaljno spreminjanje letnih izpustov močno odvisno od implementacije pariškega, ki je stopil v veljavo pred dobrima dvema letoma.
 
 ***

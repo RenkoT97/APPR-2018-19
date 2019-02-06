@@ -37,3 +37,4 @@ tabela2 <- left_join(tabela2, c3)
 tabela2 <- tabela2[-c(1)]
 tabela2 <- tabela2[c(5,1,2,3,4)]
 names(tabela2)[1] <- "DRZAVA"
+drugatabela <- tabela2
