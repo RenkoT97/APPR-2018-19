@@ -70,7 +70,7 @@ graf1 <- ggplot(data.frame()) + aes(x=LETO, y=EMISIJE, color="Države")
 tabgraf1 <- subset(tabela1, DRZAVA=="Slovenija"|DRZAVA=="Velika Britanija"|DRZAVA=="Luksemburg"|
                      DRZAVA=="Švedska"|DRZAVA=="Estonija"|DRZAVA=="Turčija"|DRZAVA=="Litva"|
                      DRZAVA=="Bolgarija"|DRZAVA=="Hrvaška"|DRZAVA=="Nemčija"|DRZAVA=="Španija"|
-                   DRZAVA=="Francija")
+                   DRZAVA=="Francija"|DRZAVA=="Romunija")
 tabgraf1[c(6)] <- tabgraf1[c(6)] / 1000000
 tabgraf1 %>% group_by(DRZAVA) %>% do(draw(.))
 
@@ -86,7 +86,7 @@ graf3 <- ggplot(data.frame()) + aes(x=Slov$LETO, y=Slov$INVESTICIJE, color = "Dr
 tabgraf3 <- subset(tabela4, DRZAVA=="Slovenija"|DRZAVA=="Velika Britanija"|DRZAVA=="Luksemburg"|
                      DRZAVA=="Švedska"|DRZAVA=="Estonija"|DRZAVA=="Turčija"|DRZAVA=="Litva"|
                      DRZAVA=="Bolgarija"|DRZAVA=="Hrvaška"|DRZAVA=="Nemčija"|DRZAVA=="Španija"|
-                     DRZAVA=="Francija")
+                     DRZAVA=="Francija"|DRZAVA=="Romunija")
 tabgraf3 %>% group_by(DRZAVA) %>% do(draw2(.))
 
 graf3 <- graf3 + xlab("LETO") + ylab("ODSTOTEK GDP, NAMENJEN INVESTICIJAM ZA VAROVANJE OKOLJA") + ggtitle("INVESTICIJE")
