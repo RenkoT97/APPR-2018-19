@@ -8,7 +8,7 @@ library("ggplot2")
 library("munsell")
 library("reshape2")
 
-source("https://raw.githubusercontent.com/jaanos/APPR-2018-19/master/lib/uvozi.zemljevid.r")
+source("lib/uvozi.zemljevid.r")
 
 draw <- function(tab) {
   graf1 <<- graf1 + geom_line(aes(x=tab$LETO, y=tab$"EMISIJE TOPLOGREDNIH PLINOV V TONAH", color=tab$DRZAVA))

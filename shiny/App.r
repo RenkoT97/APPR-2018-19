@@ -27,16 +27,17 @@ server <- function(input, output, session) {
 
 ui <- 
   
-  pageWithSidebar(
+  fluidPage(
+    div('IZPUSTI TOPLOGREDNIH PLINOV', style='font-weight: 900'),
     
-    headerPanel('Izpusti toplogrednih plinov'),
-    
-    sidebarPanel(
-      selectInput('ycol', 'Spremenljivka na y osi', tail(names(tabela1),-2), selected=names(tabela1)[[2]]),
-      numericInput('clusters', 'Stevilo skupin', 4, min = 1, max = 10)
-    ),
-    mainPanel = (
-      plotOutput('graf')
+    sidebarLayout(
+      sidebarPanel(
+        selectInput('ycol', 'Spremenljivka na y osi', tail(names(tabela1),-2), selected=names(tabela1)[[2]]),
+        numericInput('clusters', 'Stevilo skupin', 4, min = 1, max = 10)
+      ),
+      mainPanel(
+        plotOutput('graf')
+      )
     )
     
   )
